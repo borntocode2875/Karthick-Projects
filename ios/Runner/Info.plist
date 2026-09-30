@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>zoho_support_hub</string>
+	<string>Zoho Support Hub</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -24,6 +24,8 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+
+	<!-- Orientation -->
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -41,9 +43,36 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+
+	<!-- Performance -->
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+
+	<!-- Privacy permissions -->
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Zoho Support Hub needs access to your photo library to attach images to support tickets.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Zoho Support Hub may save images related to your support tickets.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Zoho Support Hub needs camera access to capture and attach photos to support tickets.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Zoho Support Hub may need microphone access for video attachments.</string>
+
+	<!-- Deep links / URL schemes -->
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.zoho.zoho_support_hub</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>zohosupporthub</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>
