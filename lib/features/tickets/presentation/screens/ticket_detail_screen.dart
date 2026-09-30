@@ -292,14 +292,18 @@ class _TicketHeader extends StatelessWidget {
           const SizedBox(height: AppSpacing.sm),
           Row(
             children: [
-              Icon(PhosphorIconsRegular.user, size: 14, color: colors.textTertiary),
+              ExcludeSemantics(
+                child: Icon(PhosphorIconsRegular.user, size: 14, color: colors.textTertiary),
+              ),
               const SizedBox(width: AppSpacing.xs),
               Text(
                 ticket.contactName,
                 style: textTheme.labelSmall?.copyWith(color: colors.textSecondary),
               ),
               const SizedBox(width: AppSpacing.base),
-              Icon(PhosphorIconsRegular.clock, size: 14, color: colors.textTertiary),
+              ExcludeSemantics(
+                child: Icon(PhosphorIconsRegular.clock, size: 14, color: colors.textTertiary),
+              ),
               const SizedBox(width: AppSpacing.xs),
               Text(
                 _formatDate(ticket.updatedAt),
@@ -340,35 +344,40 @@ class _ActionChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = AppColors.of(context);
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(AppRadii.chip),
-      child: Container(
-        padding: const EdgeInsets.symmetric(
-          horizontal: AppSpacing.sm,
-          vertical: AppSpacing.xs,
-        ),
-        decoration: BoxDecoration(
-          border: Border.all(color: colors.line),
-          borderRadius: BorderRadius.circular(AppRadii.chip),
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            icon,
-            const SizedBox(width: AppSpacing.xs),
-            Text(
-              label,
-              style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                    color: colors.textSecondary,
-                  ),
-            ),
-            if (enabled) ...[
-              const SizedBox(width: 2),
-              Icon(PhosphorIconsRegular.caretDown,
-                  size: 10, color: colors.textTertiary),
+    return Semantics(
+      button: enabled,
+      label: enabled ? '$label, tap to change' : label,
+      excludeSemantics: true,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(AppRadii.chip),
+        child: Container(
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppSpacing.sm,
+            vertical: AppSpacing.xs,
+          ),
+          decoration: BoxDecoration(
+            border: Border.all(color: colors.line),
+            borderRadius: BorderRadius.circular(AppRadii.chip),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              icon,
+              const SizedBox(width: AppSpacing.xs),
+              Text(
+                label,
+                style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                      color: colors.textSecondary,
+                    ),
+              ),
+              if (enabled) ...[
+                const SizedBox(width: 2),
+                Icon(PhosphorIconsRegular.caretDown,
+                    size: 10, color: colors.textTertiary),
+              ],
             ],
-          ],
+          ),
         ),
       ),
     );
@@ -594,6 +603,7 @@ class _ReplyBar extends StatelessWidget {
             const SizedBox(width: AppSpacing.sm),
             IconButton.filled(
               onPressed: sending ? null : onSend,
+              tooltip: 'Send reply',
               icon: sending
                   ? const SizedBox(
                       width: 16,

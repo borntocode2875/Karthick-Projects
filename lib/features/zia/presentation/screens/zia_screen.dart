@@ -640,10 +640,11 @@ class _ActionCard extends StatelessWidget {
                 Text(action.fromStatus!.displayLabel,
                     style: textTheme.labelSmall
                         ?.copyWith(color: colors.textSecondary)),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 4),
-                  child: Icon(PhosphorIconsRegular.arrowRight,
-                      size: 12),
+                const ExcludeSemantics(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 4),
+                    child: Icon(PhosphorIconsRegular.arrowRight, size: 12),
+                  ),
                 ),
                 Text(action.toStatus!.displayLabel,
                     style: textTheme.labelSmall
@@ -660,9 +661,11 @@ class _ActionCard extends StatelessWidget {
                 Text(action.fromPriority!.displayLabel,
                     style: textTheme.labelSmall
                         ?.copyWith(color: colors.textSecondary)),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 4),
-                  child: Icon(PhosphorIconsRegular.arrowRight, size: 12),
+                const ExcludeSemantics(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 4),
+                    child: Icon(PhosphorIconsRegular.arrowRight, size: 12),
+                  ),
                 ),
                 Text(action.toPriority!.displayLabel,
                     style: textTheme.labelSmall
@@ -733,53 +736,61 @@ class _TypingBubble extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = AppColors.of(context);
 
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(
-        AppSpacing.screenMargin, AppSpacing.xs,
-        AppSpacing.xxxxl, AppSpacing.xs,
-      ),
-      child: Row(
-        children: [
-          Container(
-            width: 28,
-            height: 28,
-            margin: const EdgeInsets.only(right: AppSpacing.xs),
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [colors.ziaGradientStart, colors.ziaGradientEnd],
+    return Semantics(
+      label: 'Zia is typing',
+      liveRegion: true,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(
+          AppSpacing.screenMargin, AppSpacing.xs,
+          AppSpacing.xxxxl, AppSpacing.xs,
+        ),
+        child: Row(
+          children: [
+            ExcludeSemantics(
+              child: Container(
+                width: 28,
+                height: 28,
+                margin: const EdgeInsets.only(right: AppSpacing.xs),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [colors.ziaGradientStart, colors.ziaGradientEnd],
+                  ),
+                  shape: BoxShape.circle,
+                ),
+                child: const Icon(
+                  PhosphorIconsFill.sparkle,
+                  size: 14,
+                  color: Colors.white,
+                ),
               ),
-              shape: BoxShape.circle,
             ),
-            child: const Icon(
-              PhosphorIconsFill.sparkle,
-              size: 14,
-              color: Colors.white,
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppSpacing.md,
+                vertical: AppSpacing.sm,
+              ),
+              decoration: BoxDecoration(
+                color: colors.surface,
+                border: Border.all(color: colors.line),
+                borderRadius: BorderRadius.circular(AppRadii.card),
+              ),
+              child: const ExcludeSemantics(
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    SizedBox(width: 2),
+                    _Dot(delay: 0),
+                    SizedBox(width: 4),
+                    _Dot(delay: 150),
+                    SizedBox(width: 4),
+                    _Dot(delay: 300),
+                    SizedBox(width: 2),
+                  ],
+                ),
+              ),
             ),
-          ),
-          Container(
-            padding: const EdgeInsets.symmetric(
-              horizontal: AppSpacing.md,
-              vertical: AppSpacing.sm,
-            ),
-            decoration: BoxDecoration(
-              color: colors.surface,
-              border: Border.all(color: colors.line),
-              borderRadius: BorderRadius.circular(AppRadii.card),
-            ),
-            child: const Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                SizedBox(width: 2),
-                _Dot(delay: 0),
-                SizedBox(width: 4),
-                _Dot(delay: 150),
-                SizedBox(width: 4),
-                _Dot(delay: 300),
-                SizedBox(width: 2),
-              ],
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -896,6 +907,7 @@ class _ComposerBar extends StatelessWidget {
             const SizedBox(width: AppSpacing.sm),
             IconButton.filled(
               onPressed: enabled ? onSend : null,
+              tooltip: 'Send',
               icon: const Icon(PhosphorIconsRegular.paperPlaneTilt, size: 18),
             ),
           ],

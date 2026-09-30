@@ -297,8 +297,10 @@ class _AttachmentRow extends StatelessWidget {
     final colors = AppColors.of(context);
     return ListTile(
       contentPadding: EdgeInsets.zero,
-      leading: Icon(PhosphorIconsRegular.paperclip,
-          size: 18, color: colors.textSecondary),
+      leading: ExcludeSemantics(
+        child: Icon(PhosphorIconsRegular.paperclip,
+            size: 18, color: colors.textSecondary),
+      ),
       title: Text(
         attachment.name,
         style:
@@ -307,6 +309,7 @@ class _AttachmentRow extends StatelessWidget {
       trailing: IconButton(
         icon: Icon(PhosphorIconsRegular.x, size: 16, color: colors.textSecondary),
         onPressed: onRemove,
+        tooltip: 'Remove ${attachment.name}',
       ),
       visualDensity: VisualDensity.compact,
     );

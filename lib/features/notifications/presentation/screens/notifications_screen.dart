@@ -150,19 +150,21 @@ class _NotificationTile extends ConsumerWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Icon
-            Container(
-              width: 36,
-              height: 36,
-              margin: const EdgeInsets.only(right: AppSpacing.sm, top: 2),
-              decoration: BoxDecoration(
-                color: _iconBg(notification.type, colors),
-                borderRadius: BorderRadius.circular(AppRadii.chip),
-              ),
-              child: Icon(
-                _iconFor(notification.type),
-                size: 18,
-                color: _iconFg(notification.type, colors),
+            // Icon — decorative; content conveyed by title text
+            ExcludeSemantics(
+              child: Container(
+                width: 36,
+                height: 36,
+                margin: const EdgeInsets.only(right: AppSpacing.sm, top: 2),
+                decoration: BoxDecoration(
+                  color: _iconBg(notification.type, colors),
+                  borderRadius: BorderRadius.circular(AppRadii.chip),
+                ),
+                child: Icon(
+                  _iconFor(notification.type),
+                  size: 18,
+                  color: _iconFg(notification.type, colors),
+                ),
               ),
             ),
 
@@ -194,12 +196,15 @@ class _NotificationTile extends ConsumerWidget {
                       ),
                       if (!isRead) ...[
                         const SizedBox(width: AppSpacing.xs),
-                        Container(
-                          width: 6,
-                          height: 6,
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).colorScheme.primary,
-                            shape: BoxShape.circle,
+                        // Decorative; read/unread conveyed by font weight above
+                        ExcludeSemantics(
+                          child: Container(
+                            width: 6,
+                            height: 6,
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).colorScheme.primary,
+                              shape: BoxShape.circle,
+                            ),
                           ),
                         ),
                       ],

@@ -308,7 +308,9 @@ class _SeverityBadge extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Icon(PhosphorIconsFill.circle, size: 8, color: fg),
+        ExcludeSemantics(
+          child: Icon(PhosphorIconsFill.circle, size: 8, color: fg),
+        ),
         const SizedBox(width: 3),
         Text(
           label,

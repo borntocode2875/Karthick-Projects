@@ -209,25 +209,29 @@ class _AccentDot extends StatelessWidget {
     final dotColor =
         isDark ? preset.darkPrimary : preset.lightPrimary;
 
-    return GestureDetector(
-      onTap: onTap,
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 150),
-        width: 36,
-        height: 36,
-        decoration: BoxDecoration(
-          color: dotColor,
-          shape: BoxShape.circle,
-          border: isSelected
-              ? Border.all(
-                  color: Theme.of(context).colorScheme.outline,
-                  width: 2.5,
-                )
+    return Semantics(
+      button: true,
+      label: '${preset.label} accent color${isSelected ? ", selected" : ""}',
+      child: GestureDetector(
+        onTap: onTap,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 150),
+          width: 36,
+          height: 36,
+          decoration: BoxDecoration(
+            color: dotColor,
+            shape: BoxShape.circle,
+            border: isSelected
+                ? Border.all(
+                    color: Theme.of(context).colorScheme.outline,
+                    width: 2.5,
+                  )
+                : null,
+          ),
+          child: isSelected
+              ? const Icon(Icons.check, color: Colors.white, size: 18)
               : null,
         ),
-        child: isSelected
-            ? const Icon(Icons.check, color: Colors.white, size: 18)
-            : null,
       ),
     );
   }
@@ -473,10 +477,12 @@ class _AccountTile extends ConsumerWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           if (isActive)
-            Icon(
-              PhosphorIconsFill.checkCircle,
-              size: 20,
-              color: Theme.of(context).colorScheme.primary,
+            ExcludeSemantics(
+              child: Icon(
+                PhosphorIconsFill.checkCircle,
+                size: 20,
+                color: Theme.of(context).colorScheme.primary,
+              ),
             ),
           if (!isActive) ...[
             IconButton(
@@ -622,10 +628,12 @@ class _SimulationSection extends ConsumerWidget {
                   ?.copyWith(color: colors.textSecondary),
             ),
             trailing: p.account.id == activeAccountId
-                ? Icon(
-                    PhosphorIconsFill.checkCircle,
-                    size: 18,
-                    color: Theme.of(context).colorScheme.primary,
+                ? ExcludeSemantics(
+                    child: Icon(
+                      PhosphorIconsFill.checkCircle,
+                      size: 18,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
                   )
                 : null,
             onTap: p.account.id == activeAccountId
