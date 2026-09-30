@@ -14,22 +14,6 @@ import 'package:zoho_support_hub/features/tickets/presentation/providers/ticket_
 import 'package:zoho_support_hub/features/tickets/presentation/widgets/ticket_status_badge.dart';
 
 // ---------------------------------------------------------------------------
-// Placeholder for M9 create-ticket screen
-// ---------------------------------------------------------------------------
-
-class CreateTicketPlaceholderScreen extends StatelessWidget {
-  const CreateTicketPlaceholderScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('New Ticket')),
-      body: const Center(child: Text('Create ticket — coming in Milestone 9')),
-    );
-  }
-}
-
-// ---------------------------------------------------------------------------
 // Main detail screen
 // ---------------------------------------------------------------------------
 

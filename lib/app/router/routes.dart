@@ -4,8 +4,10 @@ import 'package:zoho_support_hub/app/router/app_shell.dart';
 import 'package:zoho_support_hub/app/router/router_notifier.dart';
 import 'package:zoho_support_hub/features/authentication/presentation/screens/login_screen.dart';
 import 'package:zoho_support_hub/features/notifications/presentation/screens/notifications_screen.dart';
+import 'package:zoho_support_hub/features/ongoing_issues/presentation/screens/ongoing_issue_detail_screen.dart';
 import 'package:zoho_support_hub/features/ongoing_issues/presentation/screens/ongoing_issues_screen.dart';
 import 'package:zoho_support_hub/features/settings/presentation/screens/settings_screen.dart';
+import 'package:zoho_support_hub/features/tickets/presentation/screens/create_ticket_screen.dart';
 import 'package:zoho_support_hub/features/tickets/presentation/screens/ticket_detail_screen.dart';
 import 'package:zoho_support_hub/features/tickets/presentation/screens/tickets_screen.dart';
 import 'package:zoho_support_hub/features/zia/presentation/screens/zia_screen.dart';
@@ -22,6 +24,8 @@ abstract final class RoutePaths {
   static const ongoingIssues = '/issues';
   static const notifications = '/notifications';
   static const settings = '/settings';
+
+  static String ongoingIssueDetail(String id) => '/issues/$id';
 
   static String ticketDetail(String id) => '/tickets/$id';
 }
@@ -54,7 +58,7 @@ final routerProvider = Provider<GoRouter>((ref) {
                 routes: [
                   GoRoute(
                     path: 'new',
-                    builder: (context, state) => const CreateTicketPlaceholderScreen(),
+                    builder: (context, state) => const CreateTicketScreen(),
                   ),
                   GoRoute(
                     path: ':id',
@@ -78,6 +82,14 @@ final routerProvider = Provider<GoRouter>((ref) {
               GoRoute(
                 path: RoutePaths.ongoingIssues,
                 builder: (context, state) => const OngoingIssuesScreen(),
+                routes: [
+                  GoRoute(
+                    path: ':id',
+                    builder: (context, state) => OngoingIssueDetailScreen(
+                      issueId: state.pathParameters['id']!,
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
