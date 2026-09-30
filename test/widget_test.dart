@@ -5,8 +5,7 @@ import 'package:zoho_support_hub/app/app.dart';
 import 'package:zoho_support_hub/app/theme/theme_provider.dart';
 
 void main() {
-  testWidgets('app smoke test — scaffold renders', (tester) async {
-    // Provide a fake SharedPreferences so the theme providers are satisfied.
+  testWidgets('app shell renders bottom navigation', (tester) async {
     SharedPreferences.setMockInitialValues({});
     final prefs = await SharedPreferences.getInstance();
 
@@ -19,6 +18,14 @@ void main() {
       ),
     );
 
-    expect(find.text('Zoho Support Hub — Milestone 1 scaffold'), findsOneWidget);
+    // Let go_router settle.
+    await tester.pumpAndSettle();
+
+    // Bottom nav with all five labels should be present.
+    expect(find.text('Tickets'), findsWidgets);
+    expect(find.text('Zia'), findsOneWidget);
+    expect(find.text('Issues'), findsOneWidget);
+    expect(find.text('Notifications'), findsOneWidget);
+    expect(find.text('Settings'), findsOneWidget);
   });
 }
