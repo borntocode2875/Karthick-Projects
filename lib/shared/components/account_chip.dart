@@ -1,22 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:zoho_support_hub/app/theme/app_colors.dart';
 import 'package:zoho_support_hub/app/theme/app_spacing.dart';
+import 'package:zoho_support_hub/features/accounts/presentation/widgets/account_switcher_sheet.dart';
+import 'package:zoho_support_hub/features/authentication/presentation/providers/session_provider.dart';
 
-/// Global account chip shown in every tab's app bar.
-///
-/// Phase 1: displays a placeholder portal name and avatar.
-/// Tapping opens the account switcher sheet (wired in Milestone 6).
-class AccountChip extends StatelessWidget {
+/// Displays the active portal name and avatar; taps open the account switcher.
+class AccountChip extends ConsumerWidget {
   const AccountChip({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final colors = AppColors.of(context);
     final textTheme = Theme.of(context).textTheme;
+    final ctx = ref.watch(currentContextProvider);
+
+    final portalName = ctx?.account.portalName ?? '—';
+    final initial = ctx?.account.avatarInitial ?? '?';
+    final colorHex = ctx?.account.avatarColor ?? '#888888';
+
+    Color chipColor;
+    try {
+      final hex = colorHex.replaceFirst('#', '');
+      chipColor = Color(int.parse('FF$hex', radix: 16));
+    } catch (_) {
+      chipColor = Colors.grey;
+    }
 
     return GestureDetector(
-      onTap: () => _showAccountSwitcher(context),
+      onTap: ctx == null ? null : () => showAccountSwitcherSheet(context),
       child: Container(
         padding: const EdgeInsets.symmetric(
           horizontal: AppSpacing.sm,
@@ -30,10 +43,10 @@ class AccountChip extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const _PortalAvatar(initial: 'N', color: Color(0xFF2F5BEA)),
+            _PortalAvatar(initial: initial, color: chipColor),
             const SizedBox(width: AppSpacing.xs),
             Text(
-              'Northwind Traders',
+              portalName,
               style: textTheme.labelMedium?.copyWith(
                 color: colors.textPrimary,
                 fontWeight: FontWeight.w600,
@@ -50,16 +63,6 @@ class AccountChip extends StatelessWidget {
       ),
     );
   }
-
-  void _showAccountSwitcher(BuildContext context) {
-    // Account switcher sheet wired in Milestone 6.
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Account switcher — coming in Milestone 6'),
-        duration: Duration(seconds: 2),
-      ),
-    );
-  }
 }
 
 class _PortalAvatar extends StatelessWidget {
@@ -73,10 +76,7 @@ class _PortalAvatar extends StatelessWidget {
     return Container(
       width: 20,
       height: 20,
-      decoration: BoxDecoration(
-        color: color,
-        shape: BoxShape.circle,
-      ),
+      decoration: BoxDecoration(color: color, shape: BoxShape.circle),
       alignment: Alignment.center,
       child: Text(
         initial,

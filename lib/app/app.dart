@@ -10,6 +10,7 @@ class ZohoSupportHubApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final themePair = ref.watch(resolvedThemeProvider);
     final themeMode = ref.watch(themeModeProvider);
+    final router = ref.watch(routerProvider);
 
     return MaterialApp.router(
       title: 'Zoho Support Hub',
@@ -19,7 +20,7 @@ class ZohoSupportHubApp extends ConsumerWidget {
       themeMode: themeMode,
       themeAnimationDuration: const Duration(milliseconds: 250),
       themeAnimationCurve: Curves.easeInOut,
-      routerConfig: appRouter,
+      routerConfig: router,
     );
   }
 }
