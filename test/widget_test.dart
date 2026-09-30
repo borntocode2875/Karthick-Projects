@@ -6,6 +6,8 @@ import 'package:zoho_support_hub/app/theme/theme_provider.dart';
 import 'package:zoho_support_hub/features/accounts/data/mock_data.dart';
 import 'package:zoho_support_hub/features/authentication/domain/session_state.dart';
 import 'package:zoho_support_hub/features/authentication/presentation/providers/session_provider.dart';
+import 'package:zoho_support_hub/features/notifications/domain/notification_item.dart';
+import 'package:zoho_support_hub/features/notifications/presentation/providers/notification_providers.dart';
 
 void main() {
   testWidgets('app shell renders bottom navigation', (tester) async {
@@ -22,6 +24,10 @@ void main() {
               ref,
               const AsyncData(SessionAuthenticated(mockContextA)),
             ),
+          ),
+          // Instant empty list — avoids pending mockDelay timers in the nav bar badge.
+          notificationListProvider.overrideWith(
+            (_) async => const <NotificationItem>[],
           ),
         ],
         child: const ZohoSupportHubApp(),
