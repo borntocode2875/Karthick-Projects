@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:zoho_support_hub/app/theme/app_colors.dart';
 import 'package:zoho_support_hub/app/theme/app_spacing.dart';
 import 'package:zoho_support_hub/features/tickets/domain/dynamic_field.dart';
@@ -432,7 +431,7 @@ class _DateField extends StatelessWidget {
     return _TapField(
       label: field.label,
       displayText: value != null ? _formatDate(value!) : null,
-      icon: PhosphorIconsRegular.calendar,
+      icon: Icons.calendar_today,
       onTap: () => _pick(context),
       isRequired: field.isRequired,
       enabled: enabled,
@@ -489,7 +488,7 @@ class _DateTimeField extends StatelessWidget {
     return _TapField(
       label: field.label,
       displayText: value != null ? _formatDt(value!) : null,
-      icon: PhosphorIconsRegular.calendarBlank,
+      icon: Icons.calendar_today,
       onTap: () => _pick(context),
       isRequired: field.isRequired,
       enabled: enabled,
@@ -684,7 +683,7 @@ class _DropdownSheetField extends StatelessWidget {
     return _TapField(
       label: label,
       displayText: value,
-      icon: PhosphorIconsRegular.caretDown,
+      icon: Icons.keyboard_arrow_down,
       onTap: () => _open(context),
       isRequired: isRequired,
       enabled: enabled,
@@ -743,7 +742,7 @@ class _ChoiceSheet extends StatelessWidget {
                   title: Text(c),
                   trailing: isSelected
                       ? Icon(
-                          PhosphorIconsFill.checkCircle,
+                          Icons.check_circle,
                           color: Theme.of(context).colorScheme.primary,
                           size: 20,
                         )
@@ -824,7 +823,7 @@ class _LookupField extends StatelessWidget {
     return _TapField(
       label: '${field.label} (${field.lookupModule})',
       displayText: value,
-      icon: PhosphorIconsRegular.magnifyingGlass,
+      icon: Icons.search,
       onTap: null, // lookup not implemented in Phase 1
       isRequired: field.isRequired,
       enabled: false, // always disabled in Phase 1
@@ -857,7 +856,7 @@ class _AttachmentField extends StatelessWidget {
         const SizedBox(height: AppSpacing.xs),
         OutlinedButton.icon(
           onPressed: null, // wired in Milestone 9
-          icon: Icon(PhosphorIconsRegular.paperclip, size: 16,
+          icon: Icon(Icons.attach_file, size: 16,
               color: colors.textSecondary),
           label: Text(
             'Attach file',

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:zoho_support_hub/app/router/app_shell.dart';
 import 'package:zoho_support_hub/app/router/routes.dart';
 import 'package:zoho_support_hub/app/theme/app_colors.dart';
@@ -44,9 +43,7 @@ class _TicketsScreenState extends ConsumerState<TicketsScreen> {
       actions: [
         IconButton(
           icon: Icon(
-            filter.isEmpty
-                ? PhosphorIconsRegular.funnel
-                : PhosphorIconsFill.funnel,
+            Icons.filter_list,
             color: filter.isEmpty
                 ? colors.textSecondary
                 : Theme.of(context).colorScheme.primary,
@@ -66,12 +63,12 @@ class _TicketsScreenState extends ConsumerState<TicketsScreen> {
             child: SearchBar(
               controller: _searchController,
               hintText: 'Search tickets…',
-              leading: Icon(PhosphorIconsRegular.magnifyingGlass,
+              leading: Icon(Icons.search,
                   color: colors.textSecondary, size: 18),
               trailing: [
                 if (_searchController.text.isNotEmpty)
                   IconButton(
-                    icon: Icon(PhosphorIconsRegular.x,
+                    icon: Icon(Icons.close,
                         color: colors.textSecondary, size: 16),
                     onPressed: () {
                       _searchController.clear();
@@ -154,7 +151,7 @@ class _TicketsScreenState extends ConsumerState<TicketsScreen> {
           ? FloatingActionButton(
               onPressed: () => context.push(RoutePaths.createTicket),
               tooltip: 'New ticket',
-              child: const Icon(PhosphorIconsRegular.plus),
+              child: const Icon(Icons.add),
             )
           : null,
     );
@@ -315,8 +312,8 @@ class _FilterSheet extends ConsumerWidget {
                       avatar: sel
                           ? Icon(
                               filter.sortDirection == SortDirection.desc
-                                  ? PhosphorIconsRegular.arrowDown
-                                  : PhosphorIconsRegular.arrowUp,
+                                  ? Icons.arrow_downward
+                                  : Icons.arrow_upward,
                               size: 14,
                             )
                           : null,
@@ -457,7 +454,7 @@ class _EmptyState extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(PhosphorIconsRegular.ticket,
+            Icon(Icons.confirmation_number,
                 size: 48, color: colors.textTertiary),
             const SizedBox(height: AppSpacing.base),
             Text(
@@ -494,7 +491,7 @@ class _ErrorState extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(PhosphorIconsRegular.warningCircle,
+            Icon(Icons.error,
                 size: 40, color: colors.danger),
             const SizedBox(height: AppSpacing.md),
             Text(

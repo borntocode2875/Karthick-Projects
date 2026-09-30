@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:zoho_support_hub/app/theme/app_colors.dart';
 import 'package:zoho_support_hub/app/theme/app_spacing.dart';
 import 'package:zoho_support_hub/features/accounts/domain/desk_account.dart';
@@ -107,7 +106,7 @@ class _AccountSwitcherSheet extends ConsumerWidget {
           ListTile(
             contentPadding: EdgeInsets.zero,
             leading: Icon(
-              PhosphorIconsRegular.signOut,
+              Icons.logout,
               color: colors.danger,
               size: 22,
             ),
@@ -186,7 +185,7 @@ class _AccountTile extends StatelessWidget {
         style: textTheme.bodySmall?.copyWith(color: colors.textSecondary),
       ),
       trailing: isActive
-          ? Icon(PhosphorIconsFill.checkCircle,
+          ? Icon(Icons.check_circle,
               color: Theme.of(context).colorScheme.primary, size: 20)
           : null,
       onTap: onTap,

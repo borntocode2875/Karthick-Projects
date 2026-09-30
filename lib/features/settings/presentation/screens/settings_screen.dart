@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:zoho_support_hub/app/config/app_config.dart';
 import 'package:zoho_support_hub/app/config/repository_providers.dart';
 import 'package:zoho_support_hub/app/router/app_shell.dart';
@@ -115,17 +114,17 @@ class _ThemeTile extends ConsumerWidget {
               ButtonSegment(
                 value: ThemeMode.system,
                 label: Text('System'),
-                icon: Icon(PhosphorIconsRegular.deviceMobile, size: 16),
+                icon: Icon(Icons.phone_android, size: 16),
               ),
               ButtonSegment(
                 value: ThemeMode.light,
                 label: Text('Light'),
-                icon: Icon(PhosphorIconsRegular.sun, size: 16),
+                icon: Icon(Icons.light_mode, size: 16),
               ),
               ButtonSegment(
                 value: ThemeMode.dark,
                 label: Text('Dark'),
-                icon: Icon(PhosphorIconsRegular.moon, size: 16),
+                icon: Icon(Icons.dark_mode, size: 16),
               ),
             ],
             selected: {current},
@@ -252,31 +251,31 @@ class _NotificationsSection extends ConsumerWidget {
     return Column(
       children: [
         _NotifToggle(
-          icon: PhosphorIconsRegular.chatText,
+          icon: Icons.chat,
           label: 'Comments',
           value: prefs.comments,
           onChanged: notifier.setComments,
         ),
         _NotifToggle(
-          icon: PhosphorIconsRegular.arrowsClockwise,
+          icon: Icons.refresh,
           label: 'Status changes',
           value: prefs.statusChanges,
           onChanged: notifier.setStatusChanges,
         ),
         _NotifToggle(
-          icon: PhosphorIconsRegular.ticket,
+          icon: Icons.confirmation_number,
           label: 'Ticket updates',
           value: prefs.ticketUpdates,
           onChanged: notifier.setTicketUpdates,
         ),
         _NotifToggle(
-          icon: PhosphorIconsRegular.warning,
+          icon: Icons.warning,
           label: 'Incident alerts',
           value: prefs.incidentAlerts,
           onChanged: notifier.setIncidentAlerts,
         ),
         _NotifToggle(
-          icon: PhosphorIconsRegular.wrench,
+          icon: Icons.build,
           label: 'Maintenance alerts',
           value: prefs.maintenanceAlerts,
           onChanged: notifier.setMaintenanceAlerts,
@@ -366,7 +365,7 @@ class _AccountsSection extends ConsumerWidget {
         // Add account placeholder
         ListTile(
           leading: Icon(
-            PhosphorIconsRegular.plusCircle,
+            Icons.add_circle,
             color: Theme.of(context).colorScheme.primary,
           ),
           title: Text(
@@ -389,7 +388,7 @@ class _AccountsSection extends ConsumerWidget {
         // Sign out
         ListTile(
           leading: Icon(
-            PhosphorIconsRegular.signOut,
+            Icons.logout,
             color: AppColors.of(context).danger,
           ),
           title: Text(
@@ -479,14 +478,14 @@ class _AccountTile extends ConsumerWidget {
           if (isActive)
             ExcludeSemantics(
               child: Icon(
-                PhosphorIconsFill.checkCircle,
+                Icons.check_circle,
                 size: 20,
                 color: Theme.of(context).colorScheme.primary,
               ),
             ),
           if (!isActive) ...[
             IconButton(
-              icon: Icon(PhosphorIconsRegular.trash,
+              icon: Icon(Icons.delete,
                   size: 18, color: colors.danger),
               onPressed: () => _confirmRemove(context, ref),
               tooltip: 'Remove account',
@@ -630,7 +629,7 @@ class _SimulationSection extends ConsumerWidget {
             trailing: p.account.id == activeAccountId
                 ? ExcludeSemantics(
                     child: Icon(
-                      PhosphorIconsFill.checkCircle,
+                      Icons.check_circle,
                       size: 18,
                       color: Theme.of(context).colorScheme.primary,
                     ),

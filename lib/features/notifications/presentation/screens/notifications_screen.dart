@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:zoho_support_hub/app/router/app_shell.dart';
 import 'package:zoho_support_hub/app/router/routes.dart';
 import 'package:zoho_support_hub/app/theme/app_colors.dart';
@@ -249,11 +248,11 @@ class _NotificationTile extends ConsumerWidget {
   }
 
   static IconData _iconFor(NotificationType type) => switch (type) {
-        NotificationType.comment => PhosphorIconsRegular.chatText,
-        NotificationType.statusChange => PhosphorIconsRegular.arrowsClockwise,
-        NotificationType.ticketUpdate => PhosphorIconsRegular.ticket,
-        NotificationType.incidentAlert => PhosphorIconsRegular.warning,
-        NotificationType.maintenanceAlert => PhosphorIconsRegular.wrench,
+        NotificationType.comment => Icons.chat,
+        NotificationType.statusChange => Icons.refresh,
+        NotificationType.ticketUpdate => Icons.confirmation_number,
+        NotificationType.incidentAlert => Icons.warning,
+        NotificationType.maintenanceAlert => Icons.build,
       };
 
   static Color _iconBg(NotificationType type, AppColors c) => switch (type) {
@@ -297,7 +296,7 @@ class _EmptyState extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(PhosphorIconsRegular.bellSlash,
+            Icon(Icons.notifications_off,
                 size: 48, color: colors.textTertiary),
             const SizedBox(height: AppSpacing.base),
             Text(
@@ -328,7 +327,7 @@ class _ErrorState extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(PhosphorIconsRegular.warningCircle,
+            Icon(Icons.error,
                 size: 40, color: colors.danger),
             const SizedBox(height: AppSpacing.md),
             Text(

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:zoho_support_hub/app/theme/app_colors.dart';
 import 'package:zoho_support_hub/app/theme/app_spacing.dart';
 import 'package:zoho_support_hub/features/notifications/presentation/providers/notification_providers.dart';
@@ -61,36 +60,36 @@ class _AppNavBar extends ConsumerWidget {
       surfaceTintColor: Colors.transparent,
       destinations: [
         const NavigationDestination(
-          icon: Icon(PhosphorIconsRegular.ticket),
-          selectedIcon: Icon(PhosphorIconsFill.ticket),
+          icon: Icon(Icons.confirmation_number_outlined),
+          selectedIcon: Icon(Icons.confirmation_number),
           label: 'Tickets',
         ),
         const NavigationDestination(
-          icon: Icon(PhosphorIconsRegular.sparkle),
-          selectedIcon: Icon(PhosphorIconsFill.sparkle),
+          icon: Icon(Icons.auto_awesome_outlined),
+          selectedIcon: Icon(Icons.auto_awesome),
           label: 'Zia',
         ),
         const NavigationDestination(
-          icon: Icon(PhosphorIconsRegular.warning),
-          selectedIcon: Icon(PhosphorIconsFill.warning),
+          icon: Icon(Icons.warning_amber_outlined),
+          selectedIcon: Icon(Icons.warning),
           label: 'Issues',
         ),
         NavigationDestination(
           icon: Badge(
             isLabelVisible: showBadge,
             label: Text(badgeLabel),
-            child: const Icon(PhosphorIconsRegular.bell),
+            child: const Icon(Icons.notifications_outlined),
           ),
           selectedIcon: Badge(
             isLabelVisible: showBadge,
             label: Text(badgeLabel),
-            child: const Icon(PhosphorIconsFill.bell),
+            child: const Icon(Icons.notifications),
           ),
           label: 'Notifications',
         ),
         const NavigationDestination(
-          icon: Icon(PhosphorIconsRegular.gear),
-          selectedIcon: Icon(PhosphorIconsFill.gear),
+          icon: Icon(Icons.settings_outlined),
+          selectedIcon: Icon(Icons.settings),
           label: 'Settings',
         ),
       ],

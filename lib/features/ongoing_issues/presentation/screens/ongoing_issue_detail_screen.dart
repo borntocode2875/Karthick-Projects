@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:zoho_support_hub/app/theme/app_colors.dart';
 import 'package:zoho_support_hub/app/theme/app_spacing.dart';
 import 'package:zoho_support_hub/features/ongoing_issues/domain/ongoing_issue.dart';
@@ -101,7 +100,7 @@ class _IssueHeader extends StatelessWidget {
           const SizedBox(height: AppSpacing.sm),
           Row(
             children: [
-              Icon(PhosphorIconsRegular.clock,
+              Icon(Icons.access_time,
                   size: 14, color: colors.textTertiary),
               const SizedBox(width: AppSpacing.xs),
               Text(
@@ -111,7 +110,7 @@ class _IssueHeader extends StatelessWidget {
               ),
               if (issue.resolvedAt != null) ...[
                 const SizedBox(width: AppSpacing.base),
-                Icon(PhosphorIconsRegular.checkCircle,
+                Icon(Icons.check_circle,
                     size: 14, color: colors.success),
                 const SizedBox(width: AppSpacing.xs),
                 Text(
@@ -122,7 +121,7 @@ class _IssueHeader extends StatelessWidget {
               ],
               if (issue.scheduledFor != null) ...[
                 const SizedBox(width: AppSpacing.base),
-                Icon(PhosphorIconsRegular.calendarBlank,
+                Icon(Icons.calendar_today,
                     size: 14, color: colors.info),
                 const SizedBox(width: AppSpacing.xs),
                 Text(
@@ -471,7 +470,7 @@ class _SeverityBadge extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Icon(PhosphorIconsFill.circle, size: 8, color: fg),
+        Icon(Icons.circle, size: 8, color: fg),
         const SizedBox(width: 3),
         Text(
           label,
@@ -501,7 +500,7 @@ class _ErrorState extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(PhosphorIconsRegular.warningCircle,
+            Icon(Icons.error,
                 size: 40, color: colors.danger),
             const SizedBox(height: AppSpacing.md),
             Text(

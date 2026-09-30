@@ -612,7 +612,7 @@ class _ReplyBar extends StatelessWidget {
                         color: Colors.white,
                       ),
                     )
-                  : const Icon(PhosphorIconsRegular.paperPlaneTilt, size: 18),
+                  : const Icon(Icons.send, size: 18),
             ),
           ],
         ),
@@ -662,7 +662,7 @@ class _StatusSheet extends StatelessWidget {
             );
           }),
           ListTile(
-            leading: Icon(PhosphorIconsRegular.x, color: colors.textSecondary),
+            leading: Icon(Icons.close, color: colors.textSecondary),
             title: Text('Cancel',
                 style: TextStyle(color: colors.textSecondary)),
             onTap: () => Navigator.of(context).pop(),
@@ -714,7 +714,7 @@ class _PrioritySheet extends StatelessWidget {
             );
           }),
           ListTile(
-            leading: Icon(PhosphorIconsRegular.x, color: colors.textSecondary),
+            leading: Icon(Icons.close, color: colors.textSecondary),
             title: Text('Cancel',
                 style: TextStyle(color: colors.textSecondary)),
             onTap: () => Navigator.of(context).pop(),
@@ -743,7 +743,7 @@ class _DetailError extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(PhosphorIconsRegular.warningCircle,
+            Icon(Icons.error,
                 size: 40, color: colors.danger),
             const SizedBox(height: AppSpacing.md),
             Text(

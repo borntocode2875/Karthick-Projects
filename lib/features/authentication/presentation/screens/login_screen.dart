@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:zoho_support_hub/app/theme/app_colors.dart';
 import 'package:zoho_support_hub/app/theme/app_spacing.dart';
 import 'package:zoho_support_hub/core/errors/app_error.dart';
@@ -104,7 +103,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   decoration: InputDecoration(
                     labelText: 'Email',
                     prefixIcon: Icon(
-                      PhosphorIconsRegular.envelope,
+                      Icons.email,
                       color: colors.textSecondary,
                       size: 20,
                     ),
@@ -126,15 +125,15 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   decoration: InputDecoration(
                     labelText: 'Password',
                     prefixIcon: Icon(
-                      PhosphorIconsRegular.lock,
+                      Icons.lock,
                       color: colors.textSecondary,
                       size: 20,
                     ),
                     suffixIcon: IconButton(
                       icon: Icon(
                         _obscurePassword
-                            ? PhosphorIconsRegular.eye
-                            : PhosphorIconsRegular.eyeSlash,
+                            ? Icons.visibility
+                            : Icons.visibility_off,
                         color: colors.textSecondary,
                         size: 20,
                       ),
@@ -209,7 +208,7 @@ class _Logo extends StatelessWidget {
             borderRadius: BorderRadius.circular(AppSpacing.md),
           ),
           alignment: Alignment.center,
-          child: const Icon(PhosphorIconsFill.headset, color: Colors.white, size: 28),
+          child: const Icon(Icons.headset_mic, color: Colors.white, size: 28),
         ),
         const SizedBox(height: AppSpacing.base),
         Text(
@@ -348,7 +347,7 @@ class _ErrorBanner extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Icon(PhosphorIconsRegular.warningCircle, color: colors.danger, size: 18),
+          Icon(Icons.error, color: colors.danger, size: 18),
           const SizedBox(width: AppSpacing.sm),
           Expanded(
             child: Text(

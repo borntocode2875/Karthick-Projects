@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:zoho_support_hub/app/theme/app_colors.dart';
 import 'package:zoho_support_hub/app/theme/app_spacing.dart';
 import 'package:zoho_support_hub/features/accounts/presentation/widgets/account_switcher_sheet.dart';
@@ -54,7 +53,7 @@ class AccountChip extends ConsumerWidget {
             ),
             const SizedBox(width: AppSpacing.xs),
             Icon(
-              PhosphorIconsRegular.caretDown,
+              Icons.keyboard_arrow_down,
               size: 14,
               color: colors.textSecondary,
             ),
