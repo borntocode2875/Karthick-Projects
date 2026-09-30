@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:zoho_support_hub/app/router/app_shell.dart';
 import 'package:zoho_support_hub/app/router/routes.dart';
 import 'package:zoho_support_hub/app/theme/app_colors.dart';
@@ -24,7 +23,7 @@ class OngoingIssuesScreen extends ConsumerWidget {
         if (!filter.isEmpty)
           IconButton(
             icon: Icon(
-              PhosphorIconsFill.funnel,
+              Icons.filter_list,
               color: Theme.of(context).colorScheme.primary,
             ),
             onPressed: () =>
@@ -309,7 +308,7 @@ class _SeverityBadge extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         ExcludeSemantics(
-          child: Icon(PhosphorIconsFill.circle, size: 8, color: fg),
+          child: Icon(Icons.circle, size: 8, color: fg),
         ),
         const SizedBox(width: 3),
         Text(
@@ -362,7 +361,7 @@ class _EmptyState extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(PhosphorIconsRegular.checkCircle,
+            Icon(Icons.check_circle,
                 size: 48, color: colors.success),
             const SizedBox(height: AppSpacing.base),
             Text(
@@ -396,7 +395,7 @@ class _ErrorState extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(PhosphorIconsRegular.warningCircle,
+            Icon(Icons.error,
                 size: 40, color: colors.danger),
             const SizedBox(height: AppSpacing.md),
             Text(

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:zoho_support_hub/app/config/repository_providers.dart';
 import 'package:zoho_support_hub/app/router/app_shell.dart';
 import 'package:zoho_support_hub/app/router/routes.dart';
@@ -285,7 +284,7 @@ class _WelcomeView extends StatelessWidget {
                 colors: [colors.ziaGradientStart, colors.ziaGradientEnd],
               ).createShader(bounds),
               child: const Icon(
-                PhosphorIconsFill.sparkle,
+                Icons.auto_awesome,
                 size: 56,
                 color: Colors.white,
               ),
@@ -470,7 +469,7 @@ class _ZiaBubble extends StatelessWidget {
               shape: BoxShape.circle,
             ),
             child: const Icon(
-              PhosphorIconsFill.sparkle,
+              Icons.auto_awesome,
               size: 14,
               color: Colors.white,
             ),
@@ -511,7 +510,7 @@ class _ZiaBubble extends StatelessWidget {
                         ...referencedTicketIds.map(
                           (id) => _LinkChip(
                             label: 'View ticket',
-                            icon: PhosphorIconsRegular.ticket,
+                            icon: Icons.confirmation_number,
                             onTap: () =>
                                 context.push(RoutePaths.ticketDetail(id)),
                           ),
@@ -519,7 +518,7 @@ class _ZiaBubble extends StatelessWidget {
                         ...referencedIssueIds.map(
                           (id) => _LinkChip(
                             label: 'View issue',
-                            icon: PhosphorIconsRegular.warning,
+                            icon: Icons.warning,
                             onTap: () => context
                                 .push(RoutePaths.ongoingIssueDetail(id)),
                           ),
@@ -608,11 +607,11 @@ class _ActionCard extends StatelessWidget {
               ),
               if (action.isConfirmed) ...[
                 const Spacer(),
-                Icon(PhosphorIconsRegular.checkCircle,
+                Icon(Icons.check_circle,
                     size: 14, color: colors.success),
               ] else if (action.isRejected) ...[
                 const Spacer(),
-                Icon(PhosphorIconsRegular.x,
+                Icon(Icons.close,
                     size: 14, color: colors.textTertiary),
               ],
             ],
@@ -643,7 +642,7 @@ class _ActionCard extends StatelessWidget {
                 const ExcludeSemantics(
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 4),
-                    child: Icon(PhosphorIconsRegular.arrowRight, size: 12),
+                    child: Icon(Icons.arrow_forward, size: 12),
                   ),
                 ),
                 Text(action.toStatus!.displayLabel,
@@ -664,7 +663,7 @@ class _ActionCard extends StatelessWidget {
                 const ExcludeSemantics(
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 4),
-                    child: Icon(PhosphorIconsRegular.arrowRight, size: 12),
+                    child: Icon(Icons.arrow_forward, size: 12),
                   ),
                 ),
                 Text(action.toPriority!.displayLabel,
@@ -711,10 +710,10 @@ class _ActionCard extends StatelessWidget {
   }
 
   static IconData _actionIcon(ZiaActionType type) => switch (type) {
-        ZiaActionType.changeStatus => PhosphorIconsRegular.arrowsClockwise,
-        ZiaActionType.changePriority => PhosphorIconsRegular.arrowUp,
-        ZiaActionType.addComment => PhosphorIconsRegular.chatText,
-        ZiaActionType.createTicket => PhosphorIconsRegular.plus,
+        ZiaActionType.changeStatus => Icons.refresh,
+        ZiaActionType.changePriority => Icons.arrow_upward,
+        ZiaActionType.addComment => Icons.chat,
+        ZiaActionType.createTicket => Icons.add,
       };
 
   static String _actionTypeLabel(ZiaActionType type) => switch (type) {
@@ -758,7 +757,7 @@ class _TypingBubble extends StatelessWidget {
                   shape: BoxShape.circle,
                 ),
                 child: const Icon(
-                  PhosphorIconsFill.sparkle,
+                  Icons.auto_awesome,
                   size: 14,
                   color: Colors.white,
                 ),
@@ -908,7 +907,7 @@ class _ComposerBar extends StatelessWidget {
             IconButton.filled(
               onPressed: enabled ? onSend : null,
               tooltip: 'Send',
-              icon: const Icon(PhosphorIconsRegular.paperPlaneTilt, size: 18),
+              icon: const Icon(Icons.send, size: 18),
             ),
           ],
         ),
@@ -944,7 +943,7 @@ class _ErrorBanner extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Icon(PhosphorIconsRegular.warningCircle,
+          Icon(Icons.error,
               size: 14, color: colors.danger),
           const SizedBox(width: AppSpacing.xs),
           Expanded(
@@ -958,7 +957,7 @@ class _ErrorBanner extends StatelessWidget {
           ),
           GestureDetector(
             onTap: onDismiss,
-            child: Icon(PhosphorIconsRegular.x,
+            child: Icon(Icons.close,
                 size: 14, color: colors.danger),
           ),
         ],

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:zoho_support_hub/app/theme/app_colors.dart';
 import 'package:zoho_support_hub/app/theme/app_spacing.dart';
 import 'package:zoho_support_hub/features/accounts/domain/ticket_permissions.dart';
@@ -293,7 +292,7 @@ class _TicketHeader extends StatelessWidget {
           Row(
             children: [
               ExcludeSemantics(
-                child: Icon(PhosphorIconsRegular.user, size: 14, color: colors.textTertiary),
+                child: Icon(Icons.person, size: 14, color: colors.textTertiary),
               ),
               const SizedBox(width: AppSpacing.xs),
               Text(
@@ -302,7 +301,7 @@ class _TicketHeader extends StatelessWidget {
               ),
               const SizedBox(width: AppSpacing.base),
               ExcludeSemantics(
-                child: Icon(PhosphorIconsRegular.clock, size: 14, color: colors.textTertiary),
+                child: Icon(Icons.access_time, size: 14, color: colors.textTertiary),
               ),
               const SizedBox(width: AppSpacing.xs),
               Text(
@@ -373,7 +372,7 @@ class _ActionChip extends StatelessWidget {
               ),
               if (enabled) ...[
                 const SizedBox(width: 2),
-                Icon(PhosphorIconsRegular.caretDown,
+                Icon(Icons.keyboard_arrow_down,
                     size: 10, color: colors.textTertiary),
               ],
             ],
@@ -476,7 +475,7 @@ class _CommentBubble extends StatelessWidget {
                 CircleAvatar(
                   radius: 10,
                   backgroundColor: colors.info.withAlpha(30),
-                  child: Icon(PhosphorIconsRegular.headset,
+                  child: Icon(Icons.headset_mic,
                       size: 12, color: colors.info),
                 ),
                 const SizedBox(width: AppSpacing.xs),
@@ -499,7 +498,7 @@ class _CommentBubble extends StatelessWidget {
                   radius: 10,
                   backgroundColor:
                       Theme.of(context).colorScheme.primary.withAlpha(30),
-                  child: Icon(PhosphorIconsRegular.user,
+                  child: Icon(Icons.person,
                       size: 12,
                       color: Theme.of(context).colorScheme.primary),
                 ),

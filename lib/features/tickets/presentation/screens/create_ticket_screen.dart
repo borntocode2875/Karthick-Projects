@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:zoho_support_hub/app/config/repository_providers.dart';
 import 'package:zoho_support_hub/app/theme/app_colors.dart';
 import 'package:zoho_support_hub/app/theme/app_spacing.dart';
@@ -205,7 +204,7 @@ class _CreateTicketScreenState extends ConsumerState<CreateTicketScreen> {
           ),
           OutlinedButton.icon(
             onPressed: _addAttachment,
-            icon: const Icon(PhosphorIconsRegular.paperclip, size: 16),
+            icon: const Icon(Icons.attach_file, size: 16),
             label: const Text('Add attachment (simulated)'),
           ),
 
@@ -298,7 +297,7 @@ class _AttachmentRow extends StatelessWidget {
     return ListTile(
       contentPadding: EdgeInsets.zero,
       leading: ExcludeSemantics(
-        child: Icon(PhosphorIconsRegular.paperclip,
+        child: Icon(Icons.attach_file,
             size: 18, color: colors.textSecondary),
       ),
       title: Text(
@@ -307,7 +306,7 @@ class _AttachmentRow extends StatelessWidget {
             Theme.of(context).textTheme.bodySmall?.copyWith(color: colors.textPrimary),
       ),
       trailing: IconButton(
-        icon: Icon(PhosphorIconsRegular.x, size: 16, color: colors.textSecondary),
+        icon: Icon(Icons.close, size: 16, color: colors.textSecondary),
         onPressed: onRemove,
         tooltip: 'Remove ${attachment.name}',
       ),
