@@ -6,6 +6,7 @@ import 'package:zoho_support_hub/features/authentication/presentation/screens/lo
 import 'package:zoho_support_hub/features/notifications/presentation/screens/notifications_screen.dart';
 import 'package:zoho_support_hub/features/ongoing_issues/presentation/screens/ongoing_issues_screen.dart';
 import 'package:zoho_support_hub/features/settings/presentation/screens/settings_screen.dart';
+import 'package:zoho_support_hub/features/tickets/presentation/screens/ticket_detail_screen.dart';
 import 'package:zoho_support_hub/features/tickets/presentation/screens/tickets_screen.dart';
 import 'package:zoho_support_hub/features/zia/presentation/screens/zia_screen.dart';
 
@@ -16,10 +17,13 @@ import 'package:zoho_support_hub/features/zia/presentation/screens/zia_screen.da
 abstract final class RoutePaths {
   static const login = '/login';
   static const tickets = '/tickets';
+  static const createTicket = '/tickets/new';
   static const zia = '/zia';
   static const ongoingIssues = '/issues';
   static const notifications = '/notifications';
   static const settings = '/settings';
+
+  static String ticketDetail(String id) => '/tickets/$id';
 }
 
 // ---------------------------------------------------------------------------
@@ -47,6 +51,17 @@ final routerProvider = Provider<GoRouter>((ref) {
               GoRoute(
                 path: RoutePaths.tickets,
                 builder: (context, state) => const TicketsScreen(),
+                routes: [
+                  GoRoute(
+                    path: 'new',
+                    builder: (context, state) => const CreateTicketPlaceholderScreen(),
+                  ),
+                  GoRoute(
+                    path: ':id',
+                    builder: (context, state) =>
+                        TicketDetailScreen(ticketId: state.pathParameters['id']!),
+                  ),
+                ],
               ),
             ],
           ),
